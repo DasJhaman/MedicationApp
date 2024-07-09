@@ -1,5 +1,6 @@
 package com.example.medicationapp.di
 
+import com.example.medicationapp.ui.login.LoginViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
@@ -7,9 +8,11 @@ import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 
@@ -47,7 +50,7 @@ private val coreModule = module {
 }
 
 private val viewModelModule = module {
-
+    viewModel { LoginViewModel() }
 }
 
 private val useCaseModule = module {}
