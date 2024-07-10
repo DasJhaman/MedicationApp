@@ -1,11 +1,18 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinSerialization)
 }
+
 
 android {
     namespace = "com.example.medicationapp"
     compileSdk = 34
+    val localProperties = gradleLocalProperties(rootDir,providers)
+
 
     defaultConfig {
         applicationId = "com.example.medicationapp"
@@ -21,13 +28,26 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField(
+                "String",
+                "API_BASE_URL",
+                localProperties.getProperty("API_BASE_URL")
+            )
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField(
+                "String",
+                "API_BASE_URL",
+                localProperties.getProperty("API_BASE_URL")
+            )
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -38,6 +58,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
