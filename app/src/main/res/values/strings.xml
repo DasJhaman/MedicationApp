@@ -13,5 +13,8 @@
     <string name="login_no_account">Don\'t have an account?</string>
     <string name="sign_up">Create account</string>
 
+    <string name="dashboard_screen_title">Dashboard</string>
+
+
 
 </resources>

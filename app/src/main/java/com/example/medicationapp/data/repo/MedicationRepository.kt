@@ -2,7 +2,7 @@ package com.example.medicationapp.data.repo
 
 import com.example.medicationapp.data.RepositoryResult
 import com.example.medicationapp.data.api.medication.MedicationApi
-import com.example.medicationapp.domain.AssociatedDrug
+import com.example.medicationapp.domain.models.AssociatedDrug
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onStart
 
