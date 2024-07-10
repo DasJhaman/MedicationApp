@@ -14,6 +14,8 @@ fun MainNavGraph(
         startDestination = ScreenRoutes.LoginScreenRoute
     ) {
 
-        loginScreen()
+        loginScreen(onSuccessfullyLoggedIn = {
+            navigateToDashboardScreen()
+        })
     }
 }

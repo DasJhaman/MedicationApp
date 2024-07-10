@@ -11,6 +11,7 @@ composeBom = "2024.04.01"
 koin = "3.5.0"
 ktor = "2.3.8"
 navigaiton = "2.7.7"
+lifecycle = "2.6.0-alpha03"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,6 +29,8 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 navigation = { group = "androidx.navigation", name = "navigation-compose" , version.ref = "navigaiton"}
+compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose" , version.ref = "lifecycle"}
+
 
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }

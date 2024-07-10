@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">MedicationApp</string>
     <string name="login">Login</string>
+    <string name="generic_error_title">Error</string>
+    <string name="generic_error_message">Please try again</string>
+    <string name="generic_error_cta_title">Retry</string>
+    <string name="login_label_email_name">Email</string>
+    <string name="login_label_password">Password</string>
+    <string name="login_forget_password_label">Forgot your password?</string>
+    <string name="login_button">Log in</string>
+    <string name="login_email_error_message">Please enter valid email address</string>
+    <string name="login_password_error_message">Please enter valid password</string>
+    <string name="login_no_account">Don\'t have an account?</string>
+    <string name="sign_up">Create account</string>
+
+
 </resources>
