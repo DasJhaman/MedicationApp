@@ -18,7 +18,7 @@ import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun LoginScreen(
-    onSuccessfullyLoggedIn: () -> Unit,
+    onSuccessfullyLoggedIn: (String) -> Unit,
     loginViewModel: LoginViewModel = getViewModel()
 ) {
 
@@ -28,7 +28,9 @@ fun LoginScreen(
     LaunchedEffect(actionsFlow) {
         actionsFlow.collect { triggeredAction ->
             when (triggeredAction) {
-                LoginScreenApiResult.LoggedInSuccessfully -> onSuccessfullyLoggedIn()
+                LoginScreenApiResult.LoggedInSuccessfully -> onSuccessfullyLoggedIn(
+                    uiData.email ?: ""
+                )
 
                 is LoginScreenApiResult.LoggedInFailed -> {
                     // TODO:Show error dialog or snackbar state..

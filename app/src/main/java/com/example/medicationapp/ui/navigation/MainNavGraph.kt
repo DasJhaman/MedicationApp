@@ -15,7 +15,10 @@ fun MainNavGraph(
     ) {
 
         loginScreen(onSuccessfullyLoggedIn = {
-            navigateToDashboardScreen()
+            navController.navigateToDashboardScreen(it)
         })
+
+        dashboardScreen()
+
     }
 }

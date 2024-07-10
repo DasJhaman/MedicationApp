@@ -1,5 +1,6 @@
 package com.example.medicationapp.di
 
+import com.example.medicationapp.ui.dashboard.DashboardScreenViewModel
 import com.example.medicationapp.ui.login.LoginViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -51,6 +52,7 @@ private val coreModule = module {
 
 private val viewModelModule = module {
     viewModel { LoginViewModel() }
+    viewModel { DashboardScreenViewModel() }
 }
 
 private val useCaseModule = module {}
