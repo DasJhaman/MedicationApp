@@ -22,7 +22,7 @@ The MedicationApp comes with several preconfigured features to accelerate your d
 
 - Open this directory in Android Studio.
 - Wait for gradle to sync dependencies.
-- Please add following values to your local properties file:
+- Please add following value to your local properties file:
 ```
   API_BASE_URL="https://run.mocky.io/"
 ```
