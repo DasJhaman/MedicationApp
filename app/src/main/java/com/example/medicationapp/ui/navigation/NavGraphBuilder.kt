@@ -25,8 +25,8 @@ fun NavGraphBuilder.dashboardScreen(onDrugItemClick: (String, String) -> Unit) {
     }
 }
 
-fun NavGraphBuilder.drugDetailScreen() {
+fun NavGraphBuilder.drugDetailScreen(onNavigateBack: () -> Unit) {
     composable(route = "${DrugItemDetailScreen}/${ArgumentsNameHelper.DrugDetailScreen.drugName}={${ArgumentsNameHelper.DrugDetailScreen.drugName}}&${ArgumentsNameHelper.DrugDetailScreen.drugStrength}={${ArgumentsNameHelper.DrugDetailScreen.drugStrength}}") {
-        DrugDetailsScreen()
+        DrugDetailsScreen(onNavigateBack = onNavigateBack)
     }
 }

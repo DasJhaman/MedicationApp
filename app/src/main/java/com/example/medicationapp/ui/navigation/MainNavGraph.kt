@@ -25,6 +25,8 @@ fun MainNavGraph(
             )
         })
 
-        drugDetailScreen()
+        drugDetailScreen(onNavigateBack = {
+            navController.navigateUp()
+        })
     }
 }

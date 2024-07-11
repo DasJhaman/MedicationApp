@@ -16,6 +16,7 @@
     <string name="dashboard_screen_title">Dashboard</string>
     <string name="welcome">Welcome,</string>
 
+    <string name="drug_details_screen_title">Drug Details</string>
 
 
 </resources>
