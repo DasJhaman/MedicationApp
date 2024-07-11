@@ -6,4 +6,9 @@ object ArgumentsNameHelper {
         const val userId = "userId"
     }
 
+    object DrugDetailScreen{
+        const val drugName = "drugName"
+        const val drugStrength = "drugStrength"
+    }
+
 }

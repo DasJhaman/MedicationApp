@@ -6,6 +6,7 @@ import com.example.medicationapp.data.repo.MedicationRepository
 import com.example.medicationapp.di.KoinQualifier.UNAUTHORIZED_ENGINE_QUALIFIER
 import com.example.medicationapp.domain.AssociatedDrugUseCase
 import com.example.medicationapp.ui.dashboard.DashboardScreenViewModel
+import com.example.medicationapp.ui.drugdetails.DrugDetailsScreenViewModel
 import com.example.medicationapp.ui.login.LoginViewModel
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
@@ -67,7 +68,8 @@ private val coreModule = module {
 
 private val viewModelModule = module {
     viewModel { LoginViewModel() }
-    viewModel { DashboardScreenViewModel(get()) }
+    viewModel { DashboardScreenViewModel(get(), get()) }
+    viewModel { DrugDetailsScreenViewModel(get()) }
 }
 
 private val useCaseModule = module {

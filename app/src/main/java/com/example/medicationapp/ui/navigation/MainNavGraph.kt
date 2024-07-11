@@ -18,7 +18,13 @@ fun MainNavGraph(
             navController.navigateToDashboardScreen(it)
         })
 
-        dashboardScreen()
+        dashboardScreen(onDrugItemClick = { drugName, drugStrength ->
+            navController.navigateToDrugItemDetailScreen(
+                drugName = drugName,
+                drugStrength = drugStrength
+            )
+        })
 
+        drugDetailScreen()
     }
 }
