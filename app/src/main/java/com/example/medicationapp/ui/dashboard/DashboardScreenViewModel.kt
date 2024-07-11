@@ -30,13 +30,18 @@ class DashboardScreenViewModel(
     }
 
 
-    private fun getAssociatedDrugs() {
+    fun getAssociatedDrugs() {
         viewModelScope.launch {
             associatedDrugUseCase().collect {
-                when(it){
-                    is RepositoryResult.Error -> _uiData.update { prev-> prev.copy(contentState = ContentState.ERROR) }
-                    RepositoryResult.Loading -> _uiData.update { prev-> prev.copy(contentState = ContentState.LOADING) }
-                    is RepositoryResult.Success -> _uiData.update { prev-> prev.copy(contentState = ContentState.SUCCESS, associateDrugs = it.data) }
+                when (it) {
+                    is RepositoryResult.Error -> _uiData.update { prev -> prev.copy(contentState = ContentState.ERROR) }
+                    RepositoryResult.Loading -> _uiData.update { prev -> prev.copy(contentState = ContentState.LOADING) }
+                    is RepositoryResult.Success -> _uiData.update { prev ->
+                        prev.copy(
+                            contentState = ContentState.SUCCESS,
+                            associateDrugs = it.data
+                        )
+                    }
                 }
 
             }

@@ -10,7 +10,7 @@ internal class MedicationRepository internal constructor(
     private val medicationApi: MedicationApi
 ) {
 
-    suspend fun getAssociatedDrugsListing() = flow<RepositoryResult<out List<AssociatedDrug>>> {
+    fun getAssociatedDrugsListing() = flow<RepositoryResult<out List<AssociatedDrug>>> {
         medicationApi.getListOfMedicine().onSuccess {
             val associatedDrugs =
                 it.problems.firstOrNull()?.diabetes?.firstOrNull()?.medications?.firstOrNull()?.medications?.firstOrNull()?.medicationSub?.firstOrNull()?.associatedDrug

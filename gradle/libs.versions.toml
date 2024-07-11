@@ -12,6 +12,9 @@ koin = "3.5.0"
 ktor = "2.3.8"
 navigaiton = "2.7.7"
 lifecycle = "2.6.0-alpha03"
+mockk = "1.13.4"
+coroutineTest = "1.6.4"
+slf4j = "2.0.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,8 +31,8 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-navigation = { group = "androidx.navigation", name = "navigation-compose" , version.ref = "navigaiton"}
-compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose" , version.ref = "lifecycle"}
+navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigaiton" }
+compose-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 
 
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
@@ -42,10 +45,15 @@ ktor-json-logging = { group = "io.ktor", name = "ktor-client-logging", version.r
 ktor-client-serialization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+coroutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutineTest" }
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
+
 
 [bundles]
 koin = ["koin-core", "koin-android", "koin-compose"]
 ktor = ["ktor-core", "ktor-json", "ktor-json-logging", "ktor-client-serialization", "ktor-client-content-negotiation", "ktor-client-okhttp"]
+test = ["mockk", "coroutine-test", "slf4j-simple"]
 
 
 [plugins]

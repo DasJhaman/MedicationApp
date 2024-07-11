@@ -4,6 +4,6 @@ import com.example.medicationapp.data.repo.MedicationRepository
 
 class AssociatedDrugUseCase internal constructor(private val medicationRepository: MedicationRepository) {
 
-    suspend operator fun invoke() = medicationRepository.getAssociatedDrugsListing()
+    operator fun invoke() = medicationRepository.getAssociatedDrugsListing()
 
 }
