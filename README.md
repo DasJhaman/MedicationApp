@@ -10,6 +10,7 @@ The MedicationApp comes with several preconfigured features to accelerate your d
 <li> Koin for dependency injection </li>
 <li> Ktor for networking </li>
 <li> Kotlin serialization </li>
+<li> Unit Tests </li>
 </ul>
 
 
