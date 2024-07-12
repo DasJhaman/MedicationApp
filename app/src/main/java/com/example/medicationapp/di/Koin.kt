@@ -89,22 +89,22 @@ val dataBaseModule = module {
     single { provideDao(get()) }
 }
 
-val viewModelModule = module {
+private val viewModelModule = module {
     viewModel { LoginViewModel() }
     viewModel { DashboardScreenViewModel(get(), get()) }
     viewModel { DrugDetailsScreenViewModel(get()) }
 }
 
-val useCaseModule = module {
+private val useCaseModule = module {
     singleOf(::AssociatedDrugUseCase)
 }
 
-val repositoryModule = module {
+private val repositoryModule = module {
     single { MedicationRepository(get(), get()) }
 }
 
 
-val apiModule = module {
+private val apiModule = module {
     singleOf(::MedicationApi)
 
 }
