@@ -5,14 +5,15 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinSerialization)
+    id("androidx.room")
+    id("com.google.devtools.ksp")
 }
 
 
 android {
     namespace = "com.example.medicationapp"
     compileSdk = 34
-    val localProperties = gradleLocalProperties(rootDir,providers)
-
+    val localProperties = gradleLocalProperties(rootDir, providers)
 
     defaultConfig {
         applicationId = "com.example.medicationapp"
@@ -25,6 +26,10 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+    }
+
+    room {
+        schemaDirectory("$projectDir/schemas")
     }
 
     buildTypes {
@@ -84,6 +89,10 @@ dependencies {
     implementation(libs.bundles.koin)
     implementation(libs.bundles.ktor)
     implementation(libs.compose.lifecycle)
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
