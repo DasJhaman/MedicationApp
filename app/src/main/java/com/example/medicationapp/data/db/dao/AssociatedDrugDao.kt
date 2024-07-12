@@ -25,6 +25,6 @@ interface AssociatedDrugDao {
     suspend fun clearAll()
 
     @Query("SELECT * FROM AssociatedDrugEntity")
-    fun getAllAssociatedDrug(): Flow<List<AssociatedDrugEntity>>
+    suspend fun getAllAssociatedDrug(): Flow<List<AssociatedDrugEntity>>
 
 }

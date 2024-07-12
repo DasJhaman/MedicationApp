@@ -1,4 +1,4 @@
-package com.example.medicationapp.data.repo
+package com.example.medicationapp.data
 
 import com.example.medicationapp.data.api.medication.dto.AssociatedDrugOneDto
 import com.example.medicationapp.data.db.entity.AssociatedDrugEntity
