@@ -1,7 +1,12 @@
 package com.example.medicationapp.di
 
+import android.app.Application
+import android.content.Context
+import androidx.room.Room
 import com.example.medicationapp.BuildConfig
 import com.example.medicationapp.data.api.medication.MedicationApi
+import com.example.medicationapp.data.db.MedicationDatabase
+import com.example.medicationapp.data.db.dao.AssociatedDrugDao
 import com.example.medicationapp.data.repo.MedicationRepository
 import com.example.medicationapp.di.KoinQualifier.UNAUTHORIZED_ENGINE_QUALIFIER
 import com.example.medicationapp.domain.AssociatedDrugUseCase
@@ -18,6 +23,7 @@ import io.ktor.client.plugins.logging.Logger
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
@@ -27,10 +33,11 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 
-fun initKoin(additionalModules: List<Module>): KoinApplication {
+fun initKoin(context: Context): KoinApplication {
     return startKoin {
+        androidContext(context)
         modules(
-            additionalModules +
+            dataBaseModule +
                     apiModule +
                     coreModule +
                     viewModelModule +
@@ -40,7 +47,7 @@ fun initKoin(additionalModules: List<Module>): KoinApplication {
     }
 }
 
-private val coreModule = module {
+val coreModule = module {
     single {
         HttpClient(
             engine = get(named(UNAUTHORIZED_ENGINE_QUALIFIER)),
@@ -66,6 +73,22 @@ private val coreModule = module {
     }
 }
 
+fun provideDataBase(application: Application): MedicationDatabase =
+    Room.databaseBuilder(
+        application,
+        MedicationDatabase::class.java,
+        "medication_app"
+    ).fallbackToDestructiveMigration().build()
+
+fun provideDao(postDataBase: MedicationDatabase): AssociatedDrugDao =
+    postDataBase.associatedDrugDao()
+
+
+val dataBaseModule = module {
+    single { provideDataBase(get()) }
+    single { provideDao(get()) }
+}
+
 private val viewModelModule = module {
     viewModel { LoginViewModel() }
     viewModel { DashboardScreenViewModel(get(), get()) }
@@ -77,7 +100,7 @@ private val useCaseModule = module {
 }
 
 private val repositoryModule = module {
-    singleOf(::MedicationRepository)
+    single { MedicationRepository(get(), get()) }
 }
 
 
